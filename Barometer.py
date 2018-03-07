@@ -46,7 +46,8 @@ while True:
         
         # Writes the readings to the file
         for i in Readings:
-            Altitude_file.write(i)
+            Altitude_file.write(i + "   ")
+        Altitude_file.write("\n")
         
         # If the altitude at the start of the second is greater than the end of the second, 
         #it must be falling
@@ -55,6 +56,8 @@ while True:
         if Readings[0][2] > Readings[9][2]:
             Ascent = False
             Descent = True
+            with open("video_start.txt", "w") as apogee:
+                apogee.write("Going down!\n")
             
         Readings = []  # Resets the 'readings' array
 
