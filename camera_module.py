@@ -21,6 +21,6 @@ def initialise_camera():
                 camera.start_recording('video.h264') # uses PiCamera method for camera object to start recording
                 recording = 1 # indicate that recording is 
             
-            elif !recording:
+            elif not recording:
                 camera.stop_recording() # uses PiCamera method for camera object to stop recording
             time.sleep(2)
