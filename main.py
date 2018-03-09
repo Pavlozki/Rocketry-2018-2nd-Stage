@@ -9,14 +9,6 @@
 # For flight on 11/03/2018              #
 #########################################
 
-
-
-# Initiate all variables and the time
-
-# Wait for signal that launch has begun and then start the recording
-
-#
-
 from camera_module import * # import everything from camera module, this defines the recording of the camera to a file
 from barometer import * 
 import time
@@ -25,6 +17,7 @@ import thread # Allows multi-threading. This is important to allow two different
 # processor will figure out the best order to execute these processes. This works even though the pi zero is a single cored processor.
 import subprocess #  for calling bash commands
 import sys # For sys.exit() call
+from global_variables.py import *
 
 t_0 = time.time()
 
@@ -63,15 +56,11 @@ def initialise_I2C(): # Initialises I2C using bash scripts
         abort()
 
 if '__name__' == '__main__':
-    log_file = open("log_file" + time.strftime("%d/%m/%Y") + ".txt", "w")
     log_file.write("Time / ms     |       Comment")
     log_file.write(str(current_time) + ": Initialising...")
 
     # Initialise I2C using bash scripts
     initialise_I2C() # Will call abort() if failure occurrs
-
-    # Initialise files
-    
 
     # Initialise Threads
 
@@ -85,11 +74,9 @@ if '__name__' == '__main__':
     
     log_file.write(str(current_time) + ": Successfully Initialised threads.")
     
-    is_active = true
-    while(is_active):
-        pass
-        # The baromter reading defines when to start the camera recording
-        # When the barometer or a certain time reading is reached, then end the program
+    #  wait until the threads have executed
+    thread_1.join() 
+    thread_2.join()
     
     log_file.write(str(current_time) + ": Program end point reached, saving data...")
 
