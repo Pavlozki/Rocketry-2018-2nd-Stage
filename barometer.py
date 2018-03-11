@@ -120,7 +120,7 @@ while True:
     sleep(0.05)
 
     # Writes in the values every 1 second (10 readings)
-    if len(readings) = 10:
+    if len(readings) == 10:
 
         # Writes the readings to the file
         with open("barometer_data.dat", "a") as file:
