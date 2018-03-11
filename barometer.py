@@ -103,7 +103,7 @@ timeout = time.time() + 60*30
 ground_pressure_readings = []
 for i in range(0,10):
     ground_pressure_readings.append(ReadTempAndPressure()[1])
-ground_pressure = sum(l) / len(l)
+ground_pressure = sum(ground_pressure_readings) / len(ground_pressure_readings)
 
 readings = []
 
