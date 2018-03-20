@@ -25,7 +25,7 @@ def current_time(): # returns the current time, by subtracting off the epoch tim
     return time.time() - t_0
 
 def abort(): # Defines the exit point for the application if something goes wrong
-    log_file(str(current_time) + ": Abort called, saving files...")
+    log_file.write(str(current_time) + ": Abort called, saving files...")
     sys.exit()
 
 def initialise_I2C(): # Initialises I2C using bash scripts
@@ -85,3 +85,6 @@ if '__name__' == '__main__':
     log_file.close()
 
     # End program
+    
+    sys.exit()
+   
